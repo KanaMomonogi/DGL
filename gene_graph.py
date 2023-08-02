@@ -1,6 +1,6 @@
 import dgl
 import torch as th
-import type_judge
+import triple_type_judge
 
 
 # 根据triples统计节点类型和下标
@@ -12,7 +12,7 @@ def gene_graph_node_dic(triples: list):
     }
     for triple in triples:
         e1, e2 = triple[0], triple[2]
-        e1_type, e2_type = type_judge.typejudge(triple)
+        e1_type, e2_type = triple_type_judge.typejudge(triple)
         # 添加 e1node
         if e1_type not in graph_node_dic.keys():
             graph_node_dic.update({
@@ -42,7 +42,7 @@ def gene_graph_node_dic(triples: list):
 def gene_graph_dic(graph_dic: dict, triple: tuple, graph_node_dic: dict):
     # 从graph_node_dic里取index
     e1, r, e2 = triple
-    e1_type, e2_type = type_judge.typejudge(triple)
+    e1_type, e2_type = triple_type_judge.typejudge(triple)
     e1_index = graph_node_dic[e1_type][e1]
     e2_index = graph_node_dic[e2_type][e2]
     # graph_dic中不存在该种边类型，更新graph_dic并添加新边类型和对应边
