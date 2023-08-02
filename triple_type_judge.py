@@ -1,22 +1,6 @@
 import re
 import json
-
-'''
-从json数据中得到三元组list
-'''
-def getTripleFromJson(jsonString):
-    triplelistString = json.loads(jsonString).get("relations")
-    tripleTuplelist = []
-    for t in triplelistString:
-        tripleTuplelist.append((t.get("entity1"),t.get("relationType"),t.get("entity2")))
-    print("三元组Tuple列表为：",tripleTuplelist)
-    return tripleTuplelist
-
-
-
-
-
-
+import itertools
 #判断字符串s是否为数字
 def is_number(s):
     try:
