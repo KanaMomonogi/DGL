@@ -1,6 +1,7 @@
 import re
 import json
 import itertools
+
 #判断字符串s是否为数字
 def is_number(s):
     try:
